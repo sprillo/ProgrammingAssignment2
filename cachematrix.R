@@ -1,14 +1,14 @@
 ## makeCacheMatrix is a function taking a matrix x as a parameter.
-## The returned object x' encapsulates a matrix, initially equal to x,
+## The returned object x_wrapped encapsulates a matrix, initially equal to x,
 ## and supports the following methods for public use:
 ## - set(y): To set the underlying matrix to be equal to y.
 ## - get(): Returns the underlying matrix.
-## The returned object is meant to provide inverse matrix caching for the
-## underlying matrix x via the cacheSolve function listed below. In this
-## regard, the object x' returned by makeCacheMatrix supports the methods
-## setinverse(inv) and getinverse(), but should NOT be used publicly. They are
-## meant to be called only by the cacheSolve function. Do not use them unless
-## you know what you are doing.
+## The returned object x_wrapped is meant to provide inverse matrix caching
+## for the underlying matrix x via the cacheSolve function listed below. In
+## this regard, the object x_wrapped returned by makeCacheMatrix supports the
+## methods setinverse(inv) and getinverse(), but should NOT be used publicly.
+## They are meant to be called only by the cacheSolve function. Do not use
+## them unless you know what you are doing.
 
 makeCacheMatrix <- function(x = matrix()) {
     x_inverse <- NULL
@@ -26,8 +26,9 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 ## cacheSolve is a function intended to work in conjunction with the object
-## x' returned by makeCacheMatrix in order to provide inverse matrix caching.
-## cacheSolve takes an object x' returned by the makeCacheMatrix (which 
+## x_wrapped returned by makeCacheMatrix in order to provide inverse matrix
+## caching.
+## cacheSolve takes an object x_wrapped returned by the makeCacheMatrix (which
 ## encapsulates a matrix x), and returns the inverse of the underlying matrix
 ## x. It is designed in order to avoid recomputing the inverse of x if it
 ## has already been calculated.
@@ -36,7 +37,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## The function will print a message if the inverse of the matrix is found
 ## to be cached. Consider removing this line for efficiency purposes.
 ##
-## Check further below for an eample on how to use makeCacheMatrix and 
+## Check further below for an example on how to use makeCacheMatrix and 
 ## cacheSolve.
 
 cacheSolve <- function(x_wrapped, ...) {
